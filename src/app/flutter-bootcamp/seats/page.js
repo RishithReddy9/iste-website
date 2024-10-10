@@ -121,7 +121,7 @@ export default function Seats() {
                             .update({ status: 'booked' })
                             .eq('seat_num', seat);
                     }
-                    router.push('payment')
+                    router.push('thankyou')
                 },
                 modal: {
                     ondismiss: async function() {
@@ -191,10 +191,19 @@ export default function Seats() {
                     </div>
                 ))}
             </div>
-            <div className="align-middle justify-center flex gap-5">
-                <div>Grand Total: {price}</div>
-                <div><button onClick={() => HandlePay()}>Pay</button></div>
+            <div className="bg-white p-6 shadow-lg rounded-lg max-w-md mx-auto">
+            <div className="flex justify-between items-center mb-4 text-xl font-semibold">
+                <div className="text-gray-700">Grand Total:</div>
+                <div className="text-green-600">₹{price}</div>
             </div>
+            <button
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg w-full transition duration-300 ease-in-out transform hover:scale-105"
+                onClick={() => HandlePay()}
+            >
+                Pay Now
+            </button>
+            </div>
+
         </>
     );
 }
